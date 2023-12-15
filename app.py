@@ -52,10 +52,10 @@ def create_answers_section(df):
      return None
 
 def main():
-    df = load_data()
-    create_dataframe_section(df)
-    create_answers_section(df)
-    st.dataframe(df)
+    df1 = load_data()
+    create_dataframe_section(df1)
+    create_answers_section(df1)
+    st.dataframe(df1)
 
 if __name__ == '__main__':
         main()
