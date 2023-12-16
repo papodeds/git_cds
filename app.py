@@ -6,16 +6,16 @@ from src.extraction import load_data
 
 st.set_page_config(layout="wide")
 
-
 def create_dataframe_section(df):
-    st.title("Sections - Database Description")
+    st.write('# :bar_chart:  Sections - Database Description')
+    st.divider()
 
-    col_1, col_2 = st.columns(2)
+    col1, col2 = st.columns(2, gap='large')
 
-    col_1.header("Database")
-    col_1.dataframe(df, height=530)
+    col1.header("Database:")
+    col1.dataframe(df, height=545)
 
-    col_2.header("Data Description")
+    col2.header("Data Description:")
 
     data_description = """
                         | Coluna | Descrição |
@@ -35,57 +35,73 @@ def create_dataframe_section(df):
                         | company | Fabricanete da Motocicleta |
     """
 
-    col_2.markdown(data_description)
-
+    col2.markdown(data_description)
+    st.divider()
 
 def create_answers_section(df):
-    st.title("Main Questions Answers")
+    st.write("# :feather: Main Questions Answers")
+    st.divider()
 
-    st.header("First Round")
+    st.header("First Round:")
     st.subheader(
-        "How many bikes are being sold by their owners and how many bikes are being sold by distributors?"
+        "1. How many bikes are being sold by their owners and how many bikes are being sold by distributors?"
     )
     asw.rd1_question_9(df)
+    st.divider()
 
-    st.subheader("How many bikes are being sold are bikes from a unique owner?")
+    st.subheader("2. How many bikes are being sold are bikes from a unique owner?")
     asw.rd1_question_13(df)
+    st.divider()
 
     st.subheader(
-        "Are high kilometer bikes more expensive than bikes with lower kilometer?"
+        "3. Are high kilometer bikes more expensive than bikes with lower kilometer?"
     )
     asw.rd1_question_14(df)
+    st.divider()
 
     st.subheader(
-        "Are the bikes with a unique owner more expense on avarege than the other bikes?"
+        "4. Are the bikes with a unique owner more expense on avarege than the other bikes?"
     )
     asw.rd2_question_1(df)
+    st.divider()
 
     st.subheader(
-        "Are the bikes that have more owners also the bikes with more kilometers traveled on avarege?"
+        "5. Are the bikes that have more owners also the bikes with more kilometers traveled on avarege?"
     )
     asw.rd2_question_2(df)
+    st.divider()
 
-    st.subheader("Which company has the most bikes registered?")
+    st.subheader("6. Which company has the most bikes registered?")
     asw.rd2_question_7(df)
+    st.divider()
 
-    st.subheader("Which company has the most expensive bikes on avarege?")
+    st.subheader("7. Which company has the most expensive bikes on avarege?")
     asw.rd3_question_2(df)
+    st.divider()
 
     st.subheader(
-        "Are the company that has the most expensive bikes registered also the company with the most bikes registered?"
+        "8. Are the company that has the most expensive bikes registered also the company with the most bikes registered?"
     )
     asw.rd3_question_5(df)
+    st.divider()
 
-    st.subheader("Which bikes are good for buying?")
+    st.subheader("9. Which bikes are good for buying?")
     asw.rd3_question_7(df)
+    st.divider()
 
+def utils(df):
+    df = df.dropna()
+    df = df.reset_index(drop=True)
+    return df
 
 def create_main_layout():
     df = load_data()
 
-    create_dataframe_section(df)
+    df1 = utils(df)
 
-    create_answers_section(df)
+    create_dataframe_section(df1)
+
+    create_answers_section(df1)
 
 
 if __name__ == "__main__":
