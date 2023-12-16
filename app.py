@@ -97,11 +97,11 @@ def utils(df):
 def create_main_layout():
     df = load_data()
 
-    df1 = utils(df)
+    df = utils(df)
 
-    create_dataframe_section(df1)
+    create_dataframe_section(df)
 
-    create_answers_section(df1)
+    create_answers_section(df)
 
 
 if __name__ == "__main__":
