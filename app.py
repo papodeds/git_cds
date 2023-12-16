@@ -4,7 +4,11 @@ import streamlit as st
 import src.answers as asw
 from src.extraction import load_data
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title='Sections - Database Description',
+    page_icon=':bar_chart:',
+    layout='wide'
+)
 
 def create_dataframe_section(df):
     st.write('# :bar_chart:  Sections - Database Description')
